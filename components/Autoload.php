@@ -1,10 +1,11 @@
 <?php
 
-spl_autoload_register('classAutoloader');
+spl_autoload_register('classAutoloader');  //register autoload function
+ 
 
 
-
-function classAutoloader($class_name){
+function classAutoloader($class_name)  //include classes from models, components
+{  
 
     $arrays_path = array(
         '/models/',
@@ -12,16 +13,11 @@ function classAutoloader($class_name){
 
     );
 
-    foreach($arrays_path as $path){
+    foreach ($arrays_path as $path) {
         $path = ROOT . $path . $class_name . '.php';
 
-        if(is_file($path)){
+        if (is_file($path)) {
             include_once $path;
         }
     }
-
-    spl_autoload_register('classAutoloader');
-    
 }
-
-?>

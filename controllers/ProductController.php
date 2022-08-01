@@ -16,5 +16,3 @@ class ProductController{
         return true;
     }
 }
-
-?>

@@ -16,5 +16,3 @@ class SiteController{
         return true;
     }
 }
-
-?>

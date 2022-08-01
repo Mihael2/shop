@@ -130,6 +130,3 @@ class User{
         return $result->execute();
     }
 }
-
-
-?>

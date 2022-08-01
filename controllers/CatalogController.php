@@ -1,41 +1,37 @@
-<?php 
-  
-   
+<?php
 
-    class CatalogController{
-        
-        public function actionIndex(){
-            $categories = array();
-            $categories = Category::getCategoriesList();
 
-            $latestProducts = array();
-            $latestProducts = Product::getLatestProducts();
- 
-            require_once(ROOT . '/views/catalog/index.php');
-            return true;
-        }
 
-        public function actionCategory($categoryId, $page = 1){
+class CatalogController
+{
 
-            echo 'category :' . $categoryId;
-            echo '<br> page : ' . $page;
+    public function actionIndex()
+    {
+        $categories = array();
+        $categories = Category::getCategoriesList();
 
-            $categories = array();
-            $categories = Category::getCategoriesList();
+        $latestProducts = array();
+        $latestProducts = Product::getLatestProducts();
 
-            $categoryProducts = array();
-            $categoryProducts = Product::getProductsListByCategory($categoryId, $page);
-
-            $total = Product::getTotalProductsInCategory($categoryId);
-
-            $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
-
-            require_once(ROOT.'/views/catalog/category.php');
-
-            return true;
-
-        }
+        require_once(ROOT . '/views/catalog/index.php');
+        return true;
     }
 
+    public function actionCategory($categoryId, $page = 1)
+    {
 
-?>
+        $categories = array();
+        $categories = Category::getCategoriesList();
+
+        $categoryProducts = array();
+        $categoryProducts = Product::getProductsListByCategory($categoryId, $page);
+
+        $total = Product::getTotalProductsInCategory($categoryId);
+
+        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
+
+        require_once(ROOT . '/views/catalog/category.php');
+
+        return true;
+    }
+}

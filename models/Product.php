@@ -218,5 +218,3 @@ class Product{
         return $path . $noImage;
     }
 }
-
-?>

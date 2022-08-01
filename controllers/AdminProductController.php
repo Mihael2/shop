@@ -30,7 +30,7 @@ class AdminProductController extends AdminBase{
     public function actionCreate(){
 
         $categoriesList = array();
-        $categoriesList = Category::getCategoriesListAdmin(); // return array with db table categories
+        $categoriesList = Category::getCategoriesListAdmin(); // return array with data from db table categories
 
         if(isset($_POST['submit'])){   // if form is sended
 
@@ -55,7 +55,7 @@ class AdminProductController extends AdminBase{
 
             if(empty($errors)){   // if no errors
 
-                $id = Product::createProduct($options);     //add product
+                $id = Product::createProduct($options);     //create product
             }
 
             if($id){
@@ -108,5 +108,3 @@ class AdminProductController extends AdminBase{
         return true;
     }
 }
-
-?>

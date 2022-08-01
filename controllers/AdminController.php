@@ -6,14 +6,12 @@ class AdminController extends AdminBase{
 
         self::checkAdmin();
         
-        $userId = User::checkLogged(); //return user id 
+        $userId = User::checkLogged(); //return user id if logged
 
-        $user = User::getUserById($userId);
+        $user = User::getUserById($userId); //return user array
 
 
         require_once(ROOT.'/views/admin/index.php');
         return true;
     }
 }
-
-?>

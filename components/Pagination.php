@@ -96,12 +96,12 @@ class Pagination
         if (!is_null($links)) {
             # Если текущая страница не первая
             if ($this->current_page > 1)
-            # Создаём ссылку "На первую"
+                # Создаём ссылку "На первую"
                 $links = $this->generateHtml(1, '&lt;') . $links;
 
             # Если текущая страница не первая
             if ($this->current_page < $this->amount)
-            # Создаём ссылку "На последнюю"
+                # Создаём ссылку "На последнюю"
                 $links .= $this->generateHtml($this->amount, '&gt;');
         }
 
@@ -121,14 +121,14 @@ class Pagination
     {
         # Если текст ссылки не указан
         if (!$text)
-        # Указываем, что текст - цифра страницы
+            # Указываем, что текст - цифра страницы
             $text = $page;
 
         $currentURI = rtrim($_SERVER['REQUEST_URI'], '/') . '/';
         $currentURI = preg_replace('~/page-[0-9]+~', '', $currentURI);
         # Формируем HTML код ссылки и возвращаем
         return
-                '<li><a href="' . $currentURI . $this->index . $page . '">' . $text . '</a></li>';
+            '<li><a href="' . $currentURI . $this->index . $page . '">' . $text . '</a></li>';
     }
 
     /**
@@ -146,7 +146,7 @@ class Pagination
 
         # Если впереди есть как минимум $this->max страниц
         if ($start + $this->max <= $this->amount)
-        # Назначаем конец цикла вперёд на $this->max страниц или просто на минимум
+            # Назначаем конец цикла вперёд на $this->max страниц или просто на минимум
             $end = $start > 1 ? $start + $this->max : $this->max;
         else {
             # Конец - общее количество страниц
@@ -158,7 +158,7 @@ class Pagination
 
         # Возвращаем
         return
-                array($start, $end);
+            array($start, $end);
     }
 
     /**
@@ -175,10 +175,10 @@ class Pagination
         if ($this->current_page > 0) {
             # Если текунщая страница меньше общего количества страниц
             if ($this->current_page > $this->amount)
-            # Устанавливаем страницу на последнюю
+                # Устанавливаем страницу на последнюю
                 $this->current_page = $this->amount;
         } else
-        # Устанавливаем страницу на первую
+            # Устанавливаем страницу на первую
             $this->current_page = 1;
     }
 
@@ -192,5 +192,4 @@ class Pagination
         # Делим и возвращаем
         return round($this->total / $this->limit);
     }
-
 }

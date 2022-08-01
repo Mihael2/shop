@@ -1,32 +1,35 @@
 <?php
 
-class CartController{
+class CartController
+{
 
-    public function actionDelete($id){
+    public function actionDelete($id)
+    {
         $result = Delete::delete($id);
-        //print_r($_SESSION['products']);
-       // header("Location: /cart/");
-
     }
 
-    public function actionPlus($id){
+    public function actionPlus($id)
+    {
         $result = Plus::plus($id);
     }
 
-    public function actionAdd($id){
+    public function actionAdd($id)
+    {
         Cart::addProduct($id);
 
         $referrer = $_SERVER['HTTP_REFERER'];
         header("Location: $referrer");
     }
 
-    public function actionAddAjax($id){
+    public function actionAddAjax($id)
+    {
 
         echo Cart::addProduct($id);
         return true;
     }
 
-    public function actionIndex(){
+    public function actionIndex()
+    {
 
         $categories = array();
         $categories = Category::getCategoriesList();
@@ -34,79 +37,74 @@ class CartController{
         $productsInCart = false;
         $productsInCart = Cart::getProducts();
 
-        if($productsInCart){
+        if ($productsInCart) {
             $productsIds = array_keys($productsInCart);
             $products = Product::getProdustsByIds($productsIds);
-            
 
-           $totalPrice = Cart::getTotalPrice($products);
 
-           $totalProducts = Cart::getTotalProducts();
+            $totalPrice = Cart::getTotalPrice($products);
+
+            $totalProducts = Cart::getTotalProducts();
 
             require_once(ROOT . '/views/cart/index.php');
-        }
-        else{
+        } else {
             header("Location: /catalog");
         }
         return true;
     }
 
-    public function actionCheckout(){
-        $result = false; 
+    public function actionCheckout()
+    {
+        $result = false;
 
-        if(isset($_POST['submit'])) {
+        if (isset($_POST['submit'])) {
 
             $userName = $_POST['userName'];
             $userPhone = $_POST['userPhone'];
             $userComment = $_POST['userComment'];
 
             $errors = array();
-            if(!User::checkName($userName)){
-               $errors[] = 'Wrong name' ;
+            if (!User::checkName($userName)) {
+                $errors[] = 'Wrong name';
             }
 
-            if(empty($errors)){   //if no errors
+            if (empty($errors)) {   
 
                 $productsInCart = Cart::getProducts();
 
-                if(User::isQuest()){
-                     $userId = false;
-                } else{
+                if (User::isQuest()) {
+                    $userId = false;
+                } else {
                     $userId = User::checkLogged();
                 }
 
                 $result = Order::save($userName, $userPhone, $userComment, $userId, $productsInCart);
-                if($result){
+                if ($result) {
                     Cart::clear();
                 }
             } else {
 
                 $productsIds = array_keys($productsInCart);
-                $products = Product::getProductsByIds($productsIds);
+                $products = Product::getProdustsByIds($productsIds);
                 $totalPrice = Cart::getTotalPrice($products);
                 $totalQuantity = Cart::countItems();
-
             }
-
-
-
-        } else{
+        } else {
 
 
             $productsInCart = Cart::getProducts();
-            if($productsInCart == false){
+            if ($productsInCart == false) {
                 header("Location: /");
-            } else{
+            } else {
                 $productsIds = array_keys($productsInCart);
                 $products = Product::getProdustsByIds($productsIds);
                 $totalPrice = Cart::getTotalPrice($products);
                 $totalQuantity = Cart::countItems();
 
                 $userName = false;
-                
-                if(User::isQuest()){
 
-                } else{
+                if (User::isQuest()) {
+                } else {
                     $userId = User::checkLogged();
                     $user = User::getUserById($userId);
 
@@ -117,10 +115,5 @@ class CartController{
 
         require_once(ROOT . '/views/cart/checkout.php');
         return true;
-
-
     }
-
 }
-
-?>

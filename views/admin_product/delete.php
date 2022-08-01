@@ -1,4 +1,4 @@
-<?php include ROOT.'/views/layouts/header_admin.php';?>
+<?php include ROOT . '/views/layouts/header_admin.php'; ?>
 
 <h1>
   Delete product number <?php echo $id; ?>
@@ -9,10 +9,10 @@
 
 
 <div class="shop-button-wrapper">
-    <form method="post">
-        <input type="submit" name="submit" value="Delete" />
-    </form>
-</div>    
+  <form method="post">
+    <input type="submit" name="submit" value="Delete" />
+  </form>
+</div>
 
 
 
@@ -20,4 +20,4 @@
 
 
 
-<?php include ROOT.'/views/layouts/footer_admin.php';?>
+<?php include ROOT . '/views/layouts/footer_admin.php'; ?>

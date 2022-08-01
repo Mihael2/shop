@@ -1,4 +1,4 @@
-<?php include ROOT.'/views/layouts/header_admin.php';?>
+<?php include ROOT . '/views/layouts/header_admin.php'; ?>
 
 <h1>
   View order number <?php echo $id; ?>
@@ -21,22 +21,22 @@
           Client phone
         </th>
         <th>
-        Client comment
+          Client comment
         </th>
         <th>
-        Client id
+          Client id
         </th>
         <th>
-        Order status
+          Order status
         </th>
         <th>
-        Order date
+          Order date
         </th>
       </tr>
-</thead>
+    </thead>
 
 
-<tbody>
+    <tbody>
 
 
       <tr>
@@ -44,24 +44,24 @@
           <?php echo $id; ?>
         </td>
         <td data-title='E-mail'>
-           <?php echo $order['user_name']; ?>
+          <?php echo $order['user_name']; ?>
         </td>
         <td data-title='E-mail'>
-        <?php echo $order['user_phone']; ?>
+          <?php echo $order['user_phone']; ?>
         </td>
         <td data-title='E-mail'>
-        <?php echo $order['user_comment']; ?> 
+          <?php echo $order['user_comment']; ?>
         </td>
         <td data-title='E-mail'>
-        <?php echo $order['user_id']; ?> 
+          <?php echo $order['user_id']; ?>
         </td>
         <td data-title='E-mail'>
-        <?php echo Order::getStatusText($order['status']); ?> 
+          <?php echo Order::getStatusText($order['status']); ?>
         </td>
         <td data-title='E-mail'>
-        <?php echo $order['date']; ?> 
+          <?php echo $order['date']; ?>
         </td>
-        
+
       </tr>
 
 
@@ -72,58 +72,58 @@
 
 
 
-  <table>
-    <thead>
-    <br>
+    <table>
+      <thead>
+        <br>
 
-<br>
-    <h2>
-  Information about products in order:
-</h2>
-      <tr>
-        <th>
-          Product id
-        </th>
-        <th>
-          Code
-        </th>
-        <th>
-          Name
-        </th>
-        <th>
-        Price
-        </th>
-        <th>
-        Quantity
-        </th>
-      </tr>
-</thead> 
+        <br>
+        <h2>
+          Information about products in order:
+        </h2>
+        <tr>
+          <th>
+            Product id
+          </th>
+          <th>
+            Code
+          </th>
+          <th>
+            Name
+          </th>
+          <th>
+            Price
+          </th>
+          <th>
+            Quantity
+          </th>
+        </tr>
+      </thead>
 
-<tbody>
+      <tbody>
 
-    <?php foreach($products as $product): ?>
-      <tr>
-        <td data-title='Provider Name'>
-          <?php echo $product['id']; ?>
-        </td>
-        <td data-title='E-mail'>
-           <?php echo $product['code']; ?>
-        </td>
-        <td data-title='E-mail'>
-        <?php echo $product['name']; ?>
-        </td>
-        <td data-title='E-mail'>
-        <?php echo $product['price']; ?> $
-        </td>
-        <td data-title='E-mail'>
-        <?php echo $productsQuantity[$product['id']]; ?> 
-        </td>
-      </tr>
-      <?php endforeach; ?>
-    </tbody>
+        <?php foreach ($products as $product) : ?>
+          <tr>
+            <td data-title='Provider Name'>
+              <?php echo $product['id']; ?>
+            </td>
+            <td data-title='E-mail'>
+              <?php echo $product['code']; ?>
+            </td>
+            <td data-title='E-mail'>
+              <?php echo $product['name']; ?>
+            </td>
+            <td data-title='E-mail'>
+              <?php echo $product['price']; ?> $
+            </td>
+            <td data-title='E-mail'>
+              <?php echo $productsQuantity[$product['id']]; ?>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
 
 
-  </table>
+    </table>
 
 
 </main>
@@ -131,4 +131,4 @@
 
 
 
-<?php include ROOT.'/views/layouts/footer_admin.php';?>
+<?php include ROOT . '/views/layouts/footer_admin.php'; ?>

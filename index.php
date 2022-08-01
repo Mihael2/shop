@@ -12,10 +12,3 @@ require_once(ROOT.'/components/Autoload.php');
 
 $one = new Router();
 $one->run();
-
-
-
-
-
-
-?>

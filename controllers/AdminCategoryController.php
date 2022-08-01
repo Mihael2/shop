@@ -49,9 +49,9 @@ class AdminCategoryController extends AdminBase{
                 $errors[] = 'Fill all fields';
             }
 
-            if(empty($errors)){   // if no errors
+            if(empty($errors)){   
 
-                $id = Category::createCategory($options);     //add category
+                $id = Category::createCategory($options);    
             }
 
             header("Location: /admin/category");
@@ -90,6 +90,3 @@ class AdminCategoryController extends AdminBase{
         return true;
     }
 }
-
-
-?>

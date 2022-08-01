@@ -5,6 +5,4 @@ return array(
     'dbname' => 'test',
     'user' => 'root',
     'password' => '',
-)
-
-?>
+);

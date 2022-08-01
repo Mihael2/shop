@@ -15,5 +15,3 @@ public static function getConnection(){
     return $db;
 }
 }
-
-?>

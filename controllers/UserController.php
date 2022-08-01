@@ -53,6 +53,7 @@ class UserController{
         $password = '';
         $errors = array();
 
+
         if (isset($_POST['submit'])){
 
             $email = $_POST['email'];
@@ -92,6 +93,3 @@ class UserController{
     }
 
 }
-
-
-?>

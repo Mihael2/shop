@@ -71,5 +71,3 @@ class AdminOrderController extends AdminBase{
 
     }
 }
-
-?>
